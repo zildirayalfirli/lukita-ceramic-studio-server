@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://lukita-ceramic-studio.vercel.app/',
+    origin: 'https://lukita-ceramic-studio.vercel.app',
     credentials: true,
   })
 );
