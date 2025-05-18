@@ -6,21 +6,21 @@ import viewRoutes from './routes/viewRoute.js';
 
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 9000;
+const app = express();
 
 app.use(
   cors({
+    origin: 'https://lukita-ceramic-studio.vercel.app/',
     credentials: true,
-    origin: "http://localhost:5173",
   })
 );
 app.use(express.json());
 
-connectDB();
-
 app.use('/api/views', viewRoutes);
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Listening for requests on port: ${PORT}`);
+    });
 });
